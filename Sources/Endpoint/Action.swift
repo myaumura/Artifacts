@@ -1,5 +1,5 @@
 //
-//  Actions.swift
+//  Action.swift
 //
 //
 //  Created by k.gusev on 04.08.2024.

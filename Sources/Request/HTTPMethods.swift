@@ -39,7 +39,7 @@ func getHTTP(url: String) throws {
     task.resume()
 }
 
-func post(endpoint: Endpoint, action: Action, data: [String:Any]) throws {
+func post(endpoint: Endpoint, action: Action, data: [String:Any]? = nil) throws {
     
     let server = "https://api.artifactsmmo.com"
     let url = server + endpoint.url + action.rawValue
@@ -52,8 +52,10 @@ func post(endpoint: Endpoint, action: Action, data: [String:Any]) throws {
     
     var request = makeRequest(url: url, type: .post)
     
-    let jsonData = try JSONSerialization.data(withJSONObject: data)
-    request.httpBody = jsonData
+    if let data {
+        let jsonData = try JSONSerialization.data(withJSONObject: data)
+        request.httpBody = jsonData
+    }
     
     let semaphore = DispatchSemaphore(value: 0)
     
