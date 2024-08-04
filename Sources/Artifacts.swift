@@ -9,6 +9,6 @@ import ArgumentParser
 @main
 struct Artifacts: ParsableCommand {
     mutating func run() throws {
-        print("Hello, world!")
+        try move(x: 1, y: 2)
     }
 }
